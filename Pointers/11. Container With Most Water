@@ -1,0 +1,16 @@
+11. Container With Most Water
+
+
+class Solution {
+    public int maxArea(int[] height) {
+        int n=height.length;
+        int maxi=0;
+        for(int i=0;i<n-1;i++){
+            for(int j=i+1;j<n;j++){
+               int con=Math.min(height[i],height[j]);
+               maxi=Math.max(maxi,con*(j-i));  
+            }
+        }
+       return maxi; 
+    }
+}
