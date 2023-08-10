@@ -1,0 +1,47 @@
+//81. Search in Rotated Sorted Array II
+
+
+class Solution {
+    public boolean search(int[] nums, int target) {
+        int low=0;
+        int high=nums.length-1;
+        while(low<=high){
+
+            int mid=(low+high)/2;
+            //if Mid is target
+            if(nums[mid]==target){
+                return true;
+            }
+
+            //if start ,mid and end element is equal then if we trim , and continue again
+
+            if(nums[low]==nums[mid]&&nums[mid]==nums[high]){
+                low++;
+                high--;
+                continue;
+            }
+            //we will check , first half is sorted or not
+            if(nums[low]<=nums[mid]){
+                //in first sorted half we will check , our target belonging in this range or not
+                if(nums[low]<=target&& nums[mid]>=target){
+                    //if target in first half ,then we will set high to mid-1
+                    high=mid-1;
+                }
+                else{
+                    low=mid+1;
+                }}
+                else{
+                    //first half is not sorted
+                    if(nums[mid]<=target&&nums[high]>=target){
+     //we will check , our target belonging in range mid to high
+                        low=mid+1;
+                    }
+                    else{
+                        high=mid-1;
+                    }
+                }
+            }
+        return false;
+
+    }
+}
