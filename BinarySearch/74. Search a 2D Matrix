@@ -1,0 +1,27 @@
+//74. Search a 2D Matrix
+
+
+class Solution {
+//key point: apply binary search on 2d array, bcoz when we convert it into a linear array this would be a sorted linear array as it is row wise sorted
+   public boolean searchMatrix(int[][] matrix, int target) {
+int low=0;       
+        if(matrix.length==0) return false;
+        int n=matrix.length;
+        int m=matrix[0].length;
+        int high=(n*m)-1;
+        while(low <= high) {
+            int mid = (low + (high - low) / 2);
+     // this mid is pointing out the index of linear array not in the given matrix
+     if(matrix[mid/m][mid % m] == target) {
+//to find the index mid element of linear array into matrix, mid/col gives the row index and mid%col gives the column index
+                return true;
+            }
+            if(matrix[mid/m][mid % m] < target) {
+                low = mid + 1;
+            }
+            else {
+                high = mid - 1;
+            } }
+        return false;     
+    }
+}
