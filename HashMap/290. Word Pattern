@@ -1,0 +1,27 @@
+///////////////////////////////////////////////////////////////
+290. Word Pattern
+
+
+class Solution {
+    public boolean wordPattern(String pattern, String s) {
+        String[]str=s.split(" ");
+  if(pattern.length()!=str.length){
+      return false;  }
+    HashMap<Character,String> hm=new HashMap<>();
+    HashMap<String,Character> st=new HashMap<>();
+    for(int i=0;i<pattern.length();i++){
+        char ch=pattern.charAt(i);
+        String word=str[i];
+        if(!hm.containsKey(ch)){
+            hm.put(ch,word);
+            if(!st.containsKey(word)){
+                st.put(word,ch);
+            }
+        }
+        if(!hm.get(ch).equals(word)||!st.get(word).equals(ch)){
+            return false;
+        }
+    }
+       return true; 
+    }
+}
