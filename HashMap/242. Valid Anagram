@@ -1,0 +1,23 @@
+////////////////////////////////////////////////////////////////////////////////////
+242. Valid Anagram
+
+
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        HashMap<Character,Integer> hm=new HashMap<>();
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+            hm.put(ch,hm.getOrDefault(ch,0)+1);
+        }
+        for(int i=0;i<t.length();i++){
+             char ch=t.charAt(i);
+            hm.put(ch,hm.getOrDefault(ch,0)-1);
+        }
+        for(Map.Entry<Character,Integer> h:hm.entrySet()){
+            if(h.getValue()!=0){
+                return false;
+            }
+        }
+        return true;
+
+    }}
