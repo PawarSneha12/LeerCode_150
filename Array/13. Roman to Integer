@@ -1,0 +1,29 @@
+class Solution {
+    public int romanToInt(String s) {
+        int n=s.length();
+        int[] arr=new int[n];
+        HashMap<Character,Integer> hm=new HashMap<>();
+        hm.put('I',1);
+        hm.put('V',5);
+        hm.put('X',10);
+        hm.put('L',50);
+        hm.put('C',100);
+        hm.put('D',500);
+        hm.put('M',1000);
+        int j=0;
+        for(char ch:s.toCharArray()){
+            arr[j++]=hm.get(ch);     
+        }
+        int sum=0;
+        for(int i=0;i<n-1;i++){
+            if(arr[i]<arr[i+1]){
+                sum-=arr[i];
+            }
+            else{
+                sum+=arr[i];
+            }
+        }
+        return sum+arr[n-1];
+        
+    }
+}
